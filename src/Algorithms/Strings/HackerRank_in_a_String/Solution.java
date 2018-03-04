@@ -15,8 +15,21 @@ public class Solution {
         return Pattern.matches(regWord, s);
     }
 
+    static boolean usingNaiveMethod(String s, String word) {
+        int i = 0;
+        int index = -1;
+        for (; i < word.length(); i++) {
+            int in = s.indexOf(word.charAt(i), index + 1);
+            System.out.println(index + "   " + in + "   " + word.charAt(i));
+            if (in == -1)
+                return false;
+            index = in;
+        }
+        return true;
+    }
+
     static String hackerrankInString(String s) {
-        boolean flag = usingRegex(s, "hackerrank");
+        boolean flag = usingNaiveMethod(s, "hackerrank");
         return flag ? "YES" : "NO";
     }
 
